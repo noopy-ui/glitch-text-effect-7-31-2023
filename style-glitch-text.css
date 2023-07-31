@@ -1,0 +1,107 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #222;
+    margin: 0;
+  }
+  
+  .glitch-text {
+    position: relative;
+    display: inline-block;
+    font-size: 48px;
+    font-weight: bold;
+    color: #f00; /* Color for the main text */
+    animation: glitch-main-text 2s infinite linear alternate-reverse;
+  }
+  
+  .glitch-text__content {
+    position: relative;
+  }
+  
+  .glitch-text__content::before,
+  .glitch-text__content::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8; /* To make the glitches slightly transparent */
+    animation: glitch-anim 2s infinite linear alternate-reverse;
+  }
+  
+  .glitch-text__content::before {
+    color: #0f0; /* Color for glitch effect */
+    clip: rect(44px, 450px, 104px, 0);
+  }
+  
+  .glitch-text__content::after {
+    color: #00f; /* Color for distortion effect */
+    clip: rect(38px, 450px, 94px, 0);
+  }
+  
+  /* White glitch lines */
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff; /* Color for white glitch lines */
+    width: 100%;
+    height: 2px;
+    opacity: 0.6; /* To make the white lines slightly transparent */
+    animation: glitch-line-anim 2s infinite linear alternate-reverse;
+  }
+  
+  @keyframes glitch-main-text {
+    0%, 100% {
+      transform: translate(0);
+    }
+    25% {
+      transform: translate(3px, 3px);
+    }
+    50% {
+      transform: translate(-3px, -3px);
+    }
+    75% {
+      transform: translate(3px, -3px);
+    }
+  }
+  
+  @keyframes glitch-anim {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-3px, 3px);
+    }
+    40% {
+      transform: translate(3px, -3px);
+    }
+    60% {
+      transform: translate(-2px, -2px);
+    }
+    80% {
+      transform: translate(2px, 2px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+  
+  @keyframes glitch-line-anim {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-10px);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+    75% {
+      transform: translateY(-5px);
+    }
+  }
+  
